@@ -35,13 +35,5 @@ public class Main {
             }
         }
 
-        //Validaciones Login
-        boolean login = pacienteService.login(paciente1.getEmail(), paciente1.getPassword());
-        if (login) {
-            System.out.println("Iniciar sesión");
-        }else System.out.println("Usuario o contraseña incorrecta");
-
-        System.out.println(pacienteService.getPacientes());
-
     }
 }
