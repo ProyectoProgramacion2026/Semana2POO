@@ -24,4 +24,8 @@ public class MedicoRepository {
     public List<Medico> getMedicos() {
         return medicos;
     }
+
+    public void setMedico(Medico medico) {
+        this.medicos.add(medico);
+    }
 }

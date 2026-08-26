@@ -47,4 +47,29 @@ public class MedicoService {
     public List<Medico> getMedicos() {
         return medicoRepository.getMedicos();
     }
+
+    public void modificarMedico(Medico medico) {
+        Medico medicoExistente = medicoRepository.buscarMedicoPorId(medico.getId());
+        if (medicoExistente == null) {
+            System.out.println("Medico no encontrado");
+            return;
+        }
+
+        if(!ValidarService.validarEmail(medico.getEmail())) {
+            System.out.println("Correo Inválido");
+            return;
+        }
+
+        for(Medico m : medicoRepository.getMedicos()) {
+            if(!m.getId().equals(medico.getId()) && m.getEmail().equalsIgnoreCase(medico.getEmail()) && medico.getEmail() != null) {
+                System.out.println("El correo ya está registrado");
+                return;
+            }
+        }
+
+        medicoExistente.setNombre(medico.getNombre());
+        medicoExistente.setEmail(medico.getEmail());
+
+        System.out.println("Médico modificado correctamente");
+    }
 }
