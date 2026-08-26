@@ -35,5 +35,10 @@ public class Main {
             }
         }
 
+        //login exitoso
+        System.out.println(pacienteService.login("carlos@mail.com", "abc123"));
+        //login incorrecto
+        System.out.println(pacienteService.login("carlos@mail.com", "abc1234"));
+
     }
 }
