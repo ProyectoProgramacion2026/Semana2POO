@@ -37,6 +37,9 @@ public class PacienteService {
             }
         }
 
+        String passwordEncriptado = PasswordService.encriptar(paciente.getPassword());
+        paciente.setPassword(passwordEncriptado);
+
         pacienteRepository.guardar(paciente);
         System.out.println("Paciente registrado correctamente");
     }
@@ -63,7 +66,7 @@ public class PacienteService {
             if (paciente.getEmail() != null &&
                     paciente.getEmail().equalsIgnoreCase(email)) {
 
-                if (paciente.getPassword().equals(password)) {
+                if (PasswordService.checkPassword(password, paciente.getPassword())) {
                     return "Login exitoso";
                 }
 
